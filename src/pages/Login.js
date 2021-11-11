@@ -19,9 +19,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <p>Se connecter</p>
+    <div className="login-container">
+      <p className="login-form-title">Se connecter</p>
       <form
+        className="login-form"
         onSubmit={async (event) => {
           event.preventDefault();
           try {

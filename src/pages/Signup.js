@@ -21,9 +21,10 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>S'inscrire</h1>
+    <div className="signup">
+      <h1 className="signup-title">S'inscrire</h1>
       <form
+        className="form-signup"
         onSubmit={async (event) => {
           event.preventDefault();
           try {
@@ -54,7 +55,7 @@ const Signup = () => {
           placeholder="Mot de passe"
           onChange={handlePassword}
         ></input>
-        <input type="checkbox"></input>
+        <input id="box-signup" type="checkbox"></input>
         <label>S'inscrire a notre newsletter</label>
         <p>
           En m'inscrivant je confirma voir lu et accepte les Termes and
@@ -62,6 +63,7 @@ const Signup = () => {
           au moins 18 ans.
         </p>
         <button type="submit">S'inscrire</button>
+        <p>Tu as dejà un compte ? Connecte-toi ! </p>
       </form>
     </div>
   );

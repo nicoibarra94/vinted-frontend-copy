@@ -6,7 +6,7 @@ const Offers = ({ data }) => {
       {data.offers.map((offer, index) => {
         const id = offer._id;
         return (
-          <Link className="link" to={`/offer/${id}`}>
+          <Link key={id} className="link" to={`/offer/${id}`}>
             <div className="offer">
               <p>{offer.owner.account.username}</p>
               <div className="imgOffer">
@@ -19,7 +19,7 @@ const Offers = ({ data }) => {
               <div>
                 {offer.product_details.map((details, index) => {
                   return (
-                    <div className="home-bottom-text">
+                    <div key={index} className="home-bottom-text">
                       <p>{details.TAILLE}</p>
                       <p>{details.MARQUE}</p>
                     </div>
