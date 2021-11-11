@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -24,27 +24,24 @@ const Signup = () => {
     <div>
       <h1>S'inscrire</h1>
       <form
-        onSubmit={useEffect(() => {
-          const fetchData = async () => {
-            try {
-              const response = await axios.post(
-                "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-                {
-                  name: "Brice",
-                  phone: "0912848",
-                  password: "azerty",
-                  email: "brice@lereacteur.io",
-                }
-              );
-              setData(response.data);
-              console.log(data);
-              Cookies.set("token", data.token);
-            } catch (error) {
-              console.log(error.message);
-            }
-          };
-          fetchData();
-        }, [data])}
+        onSubmit={async (event) => {
+          event.preventDefault();
+          try {
+            const response = await axios.post(
+              "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+              {
+                username: name,
+                password: password,
+                email: email,
+              }
+            );
+            setData(response.data);
+            console.log(data);
+            Cookies.set("token", data.token);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
       >
         <input
           type="text"
