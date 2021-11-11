@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Offers = ({ data }) => {
   return (
-    <div>
+    <div className="offer-container">
       {data.offers.map((offer, index) => {
         const id = offer._id;
         return (
-          <Link to={`/product/${id}`}>
+          <Link className="link" to={`/offer/${id}`}>
             <div className="offer">
               <p>{offer.owner.account.username}</p>
               <div className="imgOffer">
@@ -15,11 +15,11 @@ const Offers = ({ data }) => {
                 </div>
               </div>
 
-              <p>{offer.product_price}€</p>
+              <p className="black">{offer.product_price}€</p>
               <div>
                 {offer.product_details.map((details, index) => {
                   return (
-                    <div>
+                    <div className="home-bottom-text">
                       <p>{details.TAILLE}</p>
                       <p>{details.MARQUE}</p>
                     </div>

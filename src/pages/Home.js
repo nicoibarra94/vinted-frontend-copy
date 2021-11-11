@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import homeImage from "./images/home-vinted.jpeg";
-import Offers from "./Offers";
+import homeImage from "../images/home-vinted.jpeg";
+import Offers from "../components/Offers";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -26,6 +26,10 @@ const Home = () => {
     <span> Loading</span>
   ) : (
     <div className="home">
+      <div className="box-image">
+        <p> Prêts à faire du tri dans vos placards ?</p>
+        <button>Commencer à vendre</button>
+      </div>
       <img src={homeImage} alt="" />
       <div>
         <Offers data={data} />
