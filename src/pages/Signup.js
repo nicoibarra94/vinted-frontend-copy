@@ -20,27 +20,32 @@ const Signup = () => {
     setPassword(event.target.value);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-          { name: "Brice", password: "azerty", email: "brice@lereacteur.io" }
-        );
-        setData(response.data);
-        const token = data.token;
-        Cookies.set("token", token);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
-  }, [data]);
-
   return (
     <div>
       <h1>S'inscrire</h1>
-      <form onSubmit={useEffect(() => {})}>
+      <form
+        onSubmit={useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await axios.post(
+                "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                {
+                  name: "Brice",
+                  phone: "0912848",
+                  password: "azerty",
+                  email: "brice@lereacteur.io",
+                }
+              );
+              setData(response.data);
+              console.log(data);
+              Cookies.set("token", data.token);
+            } catch (error) {
+              console.log(error.message);
+            }
+          };
+          fetchData();
+        }, [data])}
+      >
         <input
           type="text"
           placeholder="Nom d'utilisateur"
