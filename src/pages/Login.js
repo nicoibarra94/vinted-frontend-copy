@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ const Login = () => {
   const handlePassword = (event) => {
     setPassword(event.target.value);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -33,6 +36,13 @@ const Login = () => {
             Cookies.set("token", data.token);
           } catch (error) {
             console.log(error);
+          }
+          const token = Cookies.get("token");
+
+          if (token) {
+            navigate("/");
+          } else {
+            alert("This account doesn't exists");
           }
         }}
       >
