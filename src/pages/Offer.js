@@ -37,23 +37,21 @@ const Offer = () => {
             <div>
               <div>
                 {data.product_details.map((detail, index) => {
+                  const keys = Object.keys(detail);
                   return (
-                    <div className="top-textos">
-                      <p>{detail.MARQUE}</p>
-                      <p>{detail.TAILLE}</p>
-                      <p>{detail.ÉTAT}</p>
-                      <p>{detail.COULEUR}</p>
-                      <p>{detail.EMPLACEMENT}</p>
+                    <div className="top-textos" key={index}>
+                      <p className="grey">{keys[0]}</p>
+                      <p>{detail[keys[0]]}</p>
                     </div>
                   );
                 })}
                 <div>
-                  <hr></hr>
+                  <hr className="line"></hr>
                   <div className="bottom-textos">
                     <p className="black">{data.product_name}</p>
 
                     <p>{data.product_description}</p>
-                    <p>{data.owner.account.username}</p>
+                    <p className="black">{data.owner.account.username}</p>
                     <button>Acheter</button>
                   </div>
                 </div>

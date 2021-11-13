@@ -3,9 +3,8 @@
 /* Header */
 .header {
   width: 1280;
-  height: 100px;
+  height: 130px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -17,30 +16,44 @@
   height: 30px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 40px;
 }
 
-.button-sedesconecter {
+#button-seconecter {
   background-color: white;
-  color: red;
-  border: none;
-  width: 115px;
-  height: 30px;
+  color: #2db0ba;
+  border: 1px solid #2db0ba;
+  width: 130px;
+  height: 32px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 40px;
+}
+
+#button-sedesconecter {
+  background-color: red;
+  color: white;
+  width: 130px;
+  height: 32px;
+  border: 1px solid red;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 40px;
 }
 
 .header img {
   width: 110px;
   height: 44px;
-  margin-left: 65px;
+  margin-left: 85px;
 }
 
 .header input {
-  width: 615px;
+  width: 695px;
   height: 30px;
   border-radius: 5px;
   border: none;
   background-color: #f5f6f7;
+  margin-left: 70px;
 }
 
 #icon {
@@ -50,21 +63,28 @@
   color: #bbbbbb;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
+
 .header button {
   background-color: white;
   color: #2db0ba;
   border: 1px solid #2db0ba;
-  width: 115px;
-  height: 30px;
+  width: 135px;
+  height: 32px;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .header button:last-child {
-  margin-right: 120px;
+  margin-right: 40px;
   color: white;
   background-color: #2db0ba;
-  width: 123px;
+  width: 173px;
 }
 
 /* Home */
@@ -153,6 +173,11 @@
   margin-bottom: 8px;
 }
 
+.grey {
+  color: #97999b;
+  font-size: 15px;
+}
+
 .home-bottom-text {
   color: #999999;
   font-size: 12px;
@@ -163,7 +188,7 @@
 .black-price {
   font-size: 24px;
   color: black;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .route-offer-cointaner {
@@ -187,6 +212,15 @@
   box-sizing: border-box;
 }
 
+.top-textos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  margin-top: 50px;
+}
+
 .bottom-textos {
   margin-top: 50px;
   color: #666666;
@@ -203,6 +237,7 @@
   padding: 0 16px;
   line-height: 36px;
   margin-top: 32px;
+  cursor: pointer;
 }
 
 /* SIGNUP*/
@@ -232,22 +267,26 @@
 .form-signup input {
   border: none;
   margin-bottom: 31px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(212, 204, 204);
   width: 250px;
   font-size: 16px;
-  color: #d8d5d5;
+  color: #807676;
+  outline: none;
 }
 
 .form-signup input::placeholder {
-  color: #b6afaf;
+  color: #a09a9a;
 }
 
 #box-signup {
   margin-right: 250px;
   position: absolute;
   -webkit-transform: scale(2);
-  top: 367px;
-  right: 490px;
+  top: 397px;
+  right: 475px;
+}
+#box-signup:checked {
+  background-color: #a09a9a;
 }
 
 .form-signup label {
@@ -312,12 +351,14 @@
 }
 
 .login-form input {
+  border-width: 0px;
   border: none;
+  outline: none;
   margin-bottom: 31px;
   border-bottom: 1px solid black;
   width: 250px;
   font-size: 14px;
-  color: #faf5f5;
+  color: #252424;
 }
 
 .login-form input::placeholder {

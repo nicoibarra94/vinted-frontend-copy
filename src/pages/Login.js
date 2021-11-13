@@ -3,10 +3,9 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -33,12 +32,11 @@ const Login = () => {
                 password: password,
               }
             );
-            setData(response.data);
-            Cookies.set("token", data.token);
+            setUser(response.data.token);
           } catch (error) {
             console.log(error);
           }
-          const token = Cookies.get("token");
+          const token = Cookies.get("userToken");
 
           if (token) {
             navigate("/");

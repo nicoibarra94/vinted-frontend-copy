@@ -2,11 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -36,9 +35,8 @@ const Signup = () => {
                 email: email,
               }
             );
-            setData(response.data);
-            console.log(data);
-            Cookies.set("token", data.token);
+            setUser(response.data.token);
+            Cookies.set("token", response.data.token);
           } catch (error) {
             console.log(error);
           }

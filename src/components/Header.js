@@ -1,24 +1,50 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../images/logo.png";
-import Cookies from "js-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token, setUser }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="header">
-      <img src={Logo} alt="" />
+      <Link to="./">
+        <img src={Logo} alt="" />
+      </Link>
       <input type="text"></input>
-      <FontAwesomeIcon id="icon" icon="search" />
-      <button>'inscrire</button>
-      <button
-        className={
-          Cookies.get("token") !== undefined
-            ? "button-seconecter"
-            : "button-sedesconecter "
-        }
-      >
-        Se connecter
-      </button>
-      <button> Vends tes articles</button>
+
+      <div className="buttons">
+        {token ? (
+          <button
+            id="button-sedesconecter"
+            onClick={() => {
+              setUser(null);
+              navigate("/");
+            }}
+          >
+            Se déconecter
+          </button>
+        ) : (
+          <div className="buttons">
+            <button
+              onClick={() => {
+                navigate("/signup");
+              }}
+              className="button-seconecter"
+            >
+              S'inscrire
+            </button>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+              id="button-seconecter"
+            >
+              Se connecter
+            </button>
+          </div>
+        )}
+      </div>
+      <button>Vends tes articles</button>
     </div>
   );
 };
