@@ -9,11 +9,13 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
+import Offers from "./components/Offers";
 
 library.add(faSearch);
 
 function App() {
   const [token, setToken] = useState(null);
+  const [search, setSearch] = useState();
 
   const setUser = (token) => {
     if (token) {
@@ -24,16 +26,20 @@ function App() {
     setToken(token);
   };
 
-  console.log(token);
-
   return (
     <Router>
-      <Header token={token} setUser={setUser} />
+      <Header
+        token={token}
+        setUser={setUser}
+        search={search}
+        setSearch={setSearch}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/offers/:title" element={<Offers search={search} />} />
       </Routes>
     </Router>
   );

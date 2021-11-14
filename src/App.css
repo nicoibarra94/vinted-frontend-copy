@@ -355,10 +355,10 @@
   border: none;
   outline: none;
   margin-bottom: 31px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(161, 156, 156);
   width: 250px;
   font-size: 14px;
-  color: #252424;
+  color: #948d8d;
 }
 
 .login-form input::placeholder {

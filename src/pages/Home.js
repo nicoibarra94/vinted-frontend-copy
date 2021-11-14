@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import homeImage from "../images/home-vinted.jpeg";
-import Offers from "../components/Offers";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -32,7 +32,35 @@ const Home = () => {
       </div>
       <img src={homeImage} alt="" />
       <div>
-        <Offers data={data} />
+        <div className="offer-container">
+          {data.offers.map((offer, index) => {
+            const id = offer._id;
+            return (
+              <Link key={id} className="link" to={`/offer/${id}`}>
+                <div className="offer">
+                  <p>{offer.owner.account.username}</p>
+                  <div className="imgOffer">
+                    <div>
+                      <img src={offer.product_image.url} alt="" />
+                    </div>
+                  </div>
+
+                  <p className="black">{offer.product_price}€</p>
+                  <div>
+                    {offer.product_details.map((details, index) => {
+                      return (
+                        <div key={index} className="home-bottom-text">
+                          <p>{details.TAILLE}</p>
+                          <p>{details.MARQUE}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
