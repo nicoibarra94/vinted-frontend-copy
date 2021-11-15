@@ -1,13 +1,25 @@
 import Logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ token, setUser, search, setSearch }) => {
+const Header = ({
+  token,
+  setUser,
+  search,
+  setSearch,
+  isToggled,
+  setIsToggled,
+}) => {
   const navigate = useNavigate();
 
   const handleChangeSearch = (event) => {
     setSearch(event.target.value);
-    navigate("/offers/:title");
+    navigate("/offers/:title/:sort");
   };
+
+  // const onToggle = () => {
+  //   setIsToggled(!isToggled);
+  //   navigate("/offers/:title/:sort");
+  // };
 
   return (
     <div className="header">
@@ -21,6 +33,11 @@ const Header = ({ token, setUser, search, setSearch }) => {
         value={search}
         onChange={handleChangeSearch}
       ></input>
+
+      {/* <label className="toggle-switch">
+        <input type="checkbox" checked={isToggled} onChange={onToggle} />
+        <span className="switch" />
+      </label> */}
 
       <div className="buttons">
         {token ? (
@@ -54,7 +71,13 @@ const Header = ({ token, setUser, search, setSearch }) => {
           </div>
         )}
       </div>
-      <button>Vends tes articles</button>
+      <button
+        onClick={() => {
+          navigate("/publish");
+        }}
+      >
+        Vends tes articles
+      </button>
     </div>
   );
 };

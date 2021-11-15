@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Publish from "./pages/Publish";
 import Cookies from "js-cookie";
 import Offers from "./components/Offers";
 
@@ -16,6 +17,7 @@ library.add(faSearch);
 function App() {
   const [token, setToken] = useState(null);
   const [search, setSearch] = useState();
+  const [isToggled, setIsToggled] = useState(false);
 
   const setUser = (token) => {
     if (token) {
@@ -33,13 +35,19 @@ function App() {
         setUser={setUser}
         search={search}
         setSearch={setSearch}
+        isToggled={isToggled}
+        setIsToggled={setIsToggled}
       />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/offers/:title" element={<Offers search={search} />} />
+        <Route
+          path="/offers/:title/:sort"
+          element={<Offers search={search} isToggled={isToggled} />}
+        />
+        <Route path="/publish" element={<Publish />} />
       </Routes>
     </Router>
   );

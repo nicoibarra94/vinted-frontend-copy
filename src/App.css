@@ -87,6 +87,47 @@
   width: 173px;
 }
 
+/* TOOGLE SWITCH */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 25px;
+}
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+.toggle-switch .switch {
+  position: absolute;
+  cursor: pointer;
+  background-color: #2db0ba;
+  border-radius: 25px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.2s ease;
+}
+.toggle-switch .switch::before {
+  position: absolute;
+  content: "";
+  left: 2px;
+  top: 2px;
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+.toggle-switch input[type="checkbox"]:checked + .switch::before {
+  transform: translateX(25px);
+  background-color: white;
+}
+.toggle-switch input[type="checkbox"]:checked + .switch {
+  background-color: #2db0ba;
+}
+
 /* Home */
 
 .home {
@@ -108,7 +149,7 @@
   border-radius: 3px;
   left: 100px;
   bottom: 330px;
-  padding: 55px 28px 25px;
+  padding: 45px 28px 25px;
   box-sizing: border-box;
   position: absolute;
 }
@@ -120,14 +161,21 @@
   line-height: 40px;
 }
 
+.box-image p:last-child {
+  font-size: 16px;
+  color: #07d1db;
+  border-top: 5px;
+}
+
 .box-image button {
-  width: 187px;
+  width: 157px;
   height: 45px;
   color: white;
   background-color: #2db0ba;
   border: none;
   border-radius: 5px;
   margin-top: 20px;
+  font-size: 15px;
 }
 
 /* Offers */
@@ -283,7 +331,7 @@
   position: absolute;
   -webkit-transform: scale(2);
   top: 397px;
-  right: 475px;
+  right: 493px;
 }
 #box-signup:checked {
   background-color: #a09a9a;

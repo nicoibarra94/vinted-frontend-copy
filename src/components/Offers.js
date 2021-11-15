@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import homeImage from "../images/home-vinted.jpeg";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Offers = ({ search }) => {
+const Offers = ({ search, isToggled }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
@@ -11,7 +11,9 @@ const Offers = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers/?title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers/?title=${search}&sort=${
+            isToggled === false ? "price-asc" : "price-desc"
+          }`
         );
         setData(response.data);
         console.log(data);
@@ -21,7 +23,7 @@ const Offers = ({ search }) => {
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, data, isToggled]);
 
   return isLoading ? (
     <span>Loading...</span>
