@@ -23,7 +23,7 @@ const Offers = ({ search, isToggled }) => {
       }
     };
     fetchData();
-  }, [search, data, isToggled]);
+  }, [search]);
 
   return isLoading ? (
     <span>Loading...</span>

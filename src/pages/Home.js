@@ -41,9 +41,10 @@ const Home = () => {
                 <div className="offer">
                   <p>{offer.owner.account.username}</p>
                   <div className="imgOffer">
-                    <div>
-                      <img src={offer.product_image.url} alt="" />
-                    </div>
+                    <img
+                      src={offer.product_details[5].produc_image.secure_url}
+                      alt=""
+                    />
                   </div>
 
                   <p className="black">{offer.product_price}€</p>
