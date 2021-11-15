@@ -11,7 +11,7 @@ const Offers = ({ search, isToggled }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers/?title=${search}&sort=${
+          `https://vinted-test-api.herokuapp.com/offers/?title=${search}&sort=${
             isToggled === false ? "price-asc" : "price-desc"
           }`
         );
@@ -30,8 +30,9 @@ const Offers = ({ search, isToggled }) => {
   ) : (
     <div className="home">
       <div className="box-image">
-        <p>Prêts à faire du tri dans vos placards ?</p>
-        <button>Commencer à vendre</button>
+        <p> Prêts à faire du tri dans vos placards ?</p>
+        <button>Vends maintenant</button>
+        <p>Decouvrir comment ça marche</p>
       </div>
       <img src={homeImage} alt="" />
       <div>
@@ -43,9 +44,10 @@ const Offers = ({ search, isToggled }) => {
                 <div className="offer">
                   <p>{offer.owner.account.username}</p>
                   <div className="imgOffer">
-                    <div>
-                      <img src={offer.product_image.url} alt="" />
-                    </div>
+                    <img
+                      src={offer.product_details[5].produc_image.secure_url}
+                      alt=""
+                    />
                   </div>
 
                   <p className="black">{offer.product_price}€</p>
