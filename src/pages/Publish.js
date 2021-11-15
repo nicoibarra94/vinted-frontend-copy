@@ -35,13 +35,11 @@ const Publish = () => {
         formData,
         {
           headers: {
-            Authoization: `Bearer ${userToken}`,
+            Authorization: `Bearer ${userToken}`,
             "Content-Type": "multipart/form-data",
           },
         }
       );
-
-      console.log(response.message);
     } catch (error) {
       console.log(error.message);
     }

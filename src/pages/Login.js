@@ -41,7 +41,7 @@ const Login = ({ setUser }) => {
           if (token) {
             navigate("/");
           } else {
-            alert("This account doesn't exists");
+            alert("This account doesn't exist");
           }
         }}
       >

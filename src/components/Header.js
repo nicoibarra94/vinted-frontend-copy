@@ -1,5 +1,6 @@
 import Logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Header = ({
   token,
@@ -9,6 +10,8 @@ const Header = ({
   isToggled,
   setIsToggled,
 }) => {
+  const userToken = Cookies.get("userToken");
+
   const navigate = useNavigate();
 
   const handleChangeSearch = (event) => {
@@ -16,10 +19,10 @@ const Header = ({
     navigate("/offers/:title/:sort");
   };
 
-  // const onToggle = () => {
-  //   setIsToggled(!isToggled);
-  //   navigate("/offers/:title/:sort");
-  // };
+  const onToggle = () => {
+    setIsToggled(!isToggled);
+    navigate("/offers/:title/:sort");
+  };
 
   return (
     <div className="header">
@@ -34,10 +37,10 @@ const Header = ({
         onChange={handleChangeSearch}
       ></input>
 
-      {/* <label className="toggle-switch">
+      <label className="toggle-switch">
         <input type="checkbox" checked={isToggled} onChange={onToggle} />
         <span className="switch" />
-      </label> */}
+      </label>
 
       <div className="buttons">
         {token ? (
@@ -73,7 +76,11 @@ const Header = ({
       </div>
       <button
         onClick={() => {
-          navigate("/publish");
+          if (userToken) {
+            navigate("/publish");
+          } else {
+            navigate("/login");
+          }
         }}
       >
         Vends tes articles

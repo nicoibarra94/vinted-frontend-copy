@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 const Signup = ({ setUser }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +31,7 @@ const Signup = ({ setUser }) => {
           event.preventDefault();
           try {
             const response = await axios.post(
-              "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+              "https://vinted-test-api.herokuapp.com/user/signup",
               {
                 username: name,
                 password: password,
@@ -37,6 +40,7 @@ const Signup = ({ setUser }) => {
             );
             setUser(response.data.token);
             Cookies.set("token", response.data.token);
+            navigate("/");
           } catch (error) {
             console.log(error);
           }
