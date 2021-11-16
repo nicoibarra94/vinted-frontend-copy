@@ -1,14 +1,11 @@
-// Change the way that you restrict the enter of this page. If the user go directly to /publish, he will enter.
-//Add the navigation on submit to the display of the new announce
-//Add preview of image uploaded.
-
 import React, { useCallback } from "react";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useDropzone } from "react-dropzone";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Publish = () => {
+const Publish = ({ token }) => {
   const [file, setFile] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +15,10 @@ const Publish = () => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
+
+  const [preview, setPreview] = useState();
+
+  const navigate = useNavigate();
 
   const userToken = Cookies.get("userToken");
 
@@ -52,12 +53,15 @@ const Publish = () => {
           },
         }
       );
+      if (response.data._id) {
+        navigate(`/offer/${response.data._id}`);
+      }
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  return (
+  return token ? (
     <div className="publish-background">
       <form className="publish-form" onSubmit={handleSubmit}>
         <h2>Vends ton article</h2>
@@ -68,24 +72,27 @@ const Publish = () => {
               {...getInputProps()}
               onChange={(event) => {
                 setFile(event.target.files[0]);
-                console.log(file);
+                setPreview(URL.createObjectURL(event.target.files[0]));
               }}
             />
+
+            <img src={preview} />
+
             {isDragActive ? (
               <p>Drop the files here ...</p>
             ) : (
               <p>Drag 'n' drop some files here, or click to select files</p>
             )}
-            <div>{file.name !== undefined && <p>Picure Added!</p>}</div>
           </div>
         </div>
 
         {/* <input
-          type="file"
-          onChange={(event) => {
-            setFile(event.target.files[0]);
-          }}
-        /> */}
+      type="file"
+      onChange={(event) => {
+        setFile(event.target.files[0]);
+      }}
+    /> */}
+
         <div className="form-title-description-box">
           <div className="publish-form-title">
             <p>Titre</p>
@@ -191,6 +198,8 @@ const Publish = () => {
         </button>
       </form>
     </div>
+  ) : (
+    <Navigate to={"/login"} state={{ fromPublish: true }} />
   );
 };
 

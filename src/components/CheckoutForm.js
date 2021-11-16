@@ -53,21 +53,46 @@ const CheckoutForm = ({ id }) => {
   return (
     <div>
       {!completed && data ? (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <p>Resume de la commande</p>
-            <p>Commande</p>
-            <span>{data.product_price}</span>
-            <p>Frais protection acheteurs</p>
-            <span>0.40</span>
-            <p>Frais de port</p>
-            <span>0.80</span>
-            <p>Total</p>
-            <span>{data.product_price + 1.2}</span>
-          </div>
-          <CardElement />
-          <button type="submit">Valider paiment</button>
-        </form>
+        <div className="checkoutform-background">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <div>
+                <p>Résumé de la commande</p>
+              </div>
+              <div className="checkoutform-details-box">
+                <div className="checkoutform-details">
+                  <p>Commande</p>
+                  <span>{data.product_price} €</span>
+                </div>
+                <div className="checkoutform-details">
+                  <p>Frais protection acheteurs</p>
+                  <span>0.40 €</span>
+                </div>
+                <div className="checkoutform-details">
+                  <p>Frais de port</p>
+                  <span>0.80 €</span>
+                </div>
+              </div>
+
+              <hr />
+              <div className="checkoutform-total">
+                <p>Total</p>
+                <span>{data.product_price + 1.2} €</span>
+              </div>
+              <span id="checkoutform-final">
+                Il ne vous reste plus qu'un étape pour vous offrir{" "}
+                {data.product_name}. Vous allez payer {data.product_price + 1.2}
+                € (frais de protection et frais de port inclus).
+              </span>
+
+              <hr />
+            </div>
+            <div className="checkoutform-card-section">
+              <CardElement id="cardelement" />
+              <button type="submit">Valider paiment</button>
+            </div>
+          </form>
+        </div>
       ) : (
         <span> Paiment effectúe!</span>
       )}

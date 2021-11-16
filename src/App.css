@@ -176,6 +176,7 @@
   border-radius: 5px;
   margin-top: 20px;
   font-size: 15px;
+  cursor: pointer;
 }
 
 /* Offers */
@@ -473,9 +474,17 @@
   width: 1240px;
   height: 210px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.publish-dropzone-box img {
+  max-width: 40px;
+  max-height: 100px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .publish-dropzone p {
@@ -608,5 +617,92 @@
   width: 77px;
   height: 49px;
   margin-left: 1200px;
+  cursor: pointer;
+}
+
+/* CHECK OUT FORM */
+
+.checkoutform-background {
+  background-color: #eaedee;
+  width: 1440px;
+  height: 730px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkoutform-background form {
+  background-color: white;
+  width: 640px;
+  height: 623px;
+  padding: 36px 20px;
+  box-sizing: border-box;
+}
+
+.checkoutform-background p {
+  font-size: 15px;
+  color: #999999;
+}
+.checkoutform-details-box {
+  margin-top: 50px;
+  margin-bottom: 52px;
+}
+
+.checkoutform-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.checkoutform-details p {
+  color: #6b6969;
+  font-size: 17px;
+}
+
+.checkoutform-details span {
+  color: #696767;
+  font-size: 17px;
+}
+
+.checkoutform-total {
+  margin-top: 56px;
+  margin-bottom: 68px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.checkoutform-total span {
+  font-size: 18px;
+  color: black;
+}
+.checkoutform-total p {
+  font-size: 18px;
+  color: black;
+}
+
+#checkoutform-final {
+  font-size: 17px;
+  color: rgb(94, 92, 92);
+}
+
+.checkoutform-card-section {
+  margin-top: 50px;
+}
+
+.checkoutform-card-section button {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 22px;
+  height: 44px;
+  padding: 0 14px;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #0ab1ba;
+  border-color: #0ab1ba;
   cursor: pointer;
 }

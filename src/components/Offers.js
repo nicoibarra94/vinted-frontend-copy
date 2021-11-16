@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import homeImage from "../images/home-vinted.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Offers = ({ search, isToggled }) => {
+const Offers = ({ search, isToggled, token }) => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
@@ -16,7 +17,6 @@ const Offers = ({ search, isToggled }) => {
           }`
         );
         setData(response.data);
-
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -31,7 +31,17 @@ const Offers = ({ search, isToggled }) => {
     <div className="home">
       <div className="box-image">
         <p> Prêts à faire du tri dans vos placards ?</p>
-        <button>Vends maintenant</button>
+        <button
+          onClick={() => {
+            if (token) {
+              navigate("/publish");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          Vends maintenant
+        </button>
         <p>Decouvrir comment ça marche</p>
       </div>
       <img src={homeImage} alt="" />

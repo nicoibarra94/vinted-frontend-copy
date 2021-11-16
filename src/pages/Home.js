@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import homeImage from "../images/home-vinted.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ token }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +29,17 @@ const Home = () => {
     <div className="home">
       <div className="box-image">
         <p> Prêts à faire du tri dans vos placards ?</p>
-        <button>Vends maintenant</button>
+        <button
+          onClick={() => {
+            if (token) {
+              navigate("/publish");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          Vends maintenant
+        </button>
         <p>Decouvrir comment ça marche</p>
       </div>
       <img src={homeImage} alt="" />

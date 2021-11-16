@@ -40,15 +40,17 @@ function App() {
         setIsToggled={setIsToggled}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home token={token} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route
           path="/offers/:title/:sort"
-          element={<Offers search={search} isToggled={isToggled} />}
+          element={
+            <Offers search={search} isToggled={isToggled} token={token} />
+          }
         />
-        <Route path="/publish" element={<Publish />} />
+        <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/payment/:id" element={<Payment token={token} />} />
       </Routes>
     </Router>
