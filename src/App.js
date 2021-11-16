@@ -19,7 +19,7 @@ function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [search, setSearch] = useState("");
   const [isToggled, setIsToggled] = useState(false);
-  const [priceMax, setPriceMax] = useState(0);
+  const [priceMax, setPriceMax] = useState(1000);
   const [priceMin, setPriceMin] = useState(0);
 
   const setUser = (token) => {

@@ -38,7 +38,8 @@
   border: 1px solid red;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 40px;
+  margin-left: 90px;
+  margin-right: 90px;
 }
 
 .header img {
@@ -49,7 +50,7 @@
 
 .header input {
   width: 555px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   border: none;
   background-color: #f5f6f7;
@@ -63,9 +64,13 @@
 
 #icon {
   position: absolute;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
   left: 230px;
-  right: 400px;
+  right: 700px;
   color: #bbbbbb;
+  background-color: #f5f6f7;
 }
 
 .buttons {
