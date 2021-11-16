@@ -9,13 +9,14 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 import Cookies from "js-cookie";
 import Offers from "./components/Offers";
 
 library.add(faSearch);
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [search, setSearch] = useState();
   const [isToggled, setIsToggled] = useState(false);
 
@@ -48,6 +49,7 @@ function App() {
           element={<Offers search={search} isToggled={isToggled} />}
         />
         <Route path="/publish" element={<Publish />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
