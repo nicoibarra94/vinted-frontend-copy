@@ -49,7 +49,7 @@ function App() {
           element={<Offers search={search} isToggled={isToggled} />}
         />
         <Route path="/publish" element={<Publish />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment/:id" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );
