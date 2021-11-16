@@ -9,6 +9,10 @@ const Header = ({
   setSearch,
   isToggled,
   setIsToggled,
+  priceMax,
+  setPriceMax,
+  priceMin,
+  setPriceMin,
 }) => {
   const userToken = Cookies.get("userToken");
 
@@ -16,12 +20,22 @@ const Header = ({
 
   const handleChangeSearch = (event) => {
     setSearch(event.target.value);
-    navigate("/offers/:title/:sort");
+    navigate("/offers/:title/:priceMin/:priceMax/:sort");
   };
 
   const onToggle = () => {
     setIsToggled(!isToggled);
-    navigate("/offers/:title/:sort");
+    navigate("/offers/:title/:priceMin/:priceMax/:sort");
+  };
+
+  const handleChangePriceMax = (event) => {
+    setPriceMax(event.target.value);
+    navigate("/offers/:title/:priceMin/:priceMax/:sort");
+  };
+
+  const handleChangePriceMin = (event) => {
+    setPriceMin(event.target.value);
+    navigate("/offers/:title/:priceMin/:priceMax/:sort");
   };
 
   return (
@@ -29,18 +43,42 @@ const Header = ({
       <Link to="./">
         <img src={Logo} alt="" />
       </Link>
+      <div>
+        <input
+          type="text"
+          placeholder="Recherche des articles"
+          value={search}
+          onChange={handleChangeSearch}
+        ></input>
 
-      <input
-        type="text"
-        placeholder="Recherche des articles"
-        value={search}
-        onChange={handleChangeSearch}
-      ></input>
+        <div className="container-switch">
+          <p>Croissant</p>
+          <label className="toggle-switch">
+            <input type="checkbox" checked={isToggled} onChange={onToggle} />
+            <span className="switch" />
+          </label>
+          <p>Descendent</p>
 
-      <label className="toggle-switch">
-        <input type="checkbox" checked={isToggled} onChange={onToggle} />
-        <span className="switch" />
-      </label>
+          <div className="switch-filters-asc-desc">
+            <p>Prix max</p>
+            <input
+              type="number"
+              placeholder="1000"
+              value={priceMax}
+              onChange={handleChangePriceMax}
+            />
+            <span>€</span>
+            <p>Prix min</p>
+            <input
+              type="number"
+              placeholder="0"
+              value={priceMin}
+              onChange={handleChangePriceMin}
+            ></input>
+            <span>€</span>
+          </div>
+        </div>
+      </div>
 
       <div className="buttons">
         {token ? (

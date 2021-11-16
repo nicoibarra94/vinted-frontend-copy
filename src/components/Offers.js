@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import homeImage from "../images/home-vinted.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 
-const Offers = ({ search, isToggled, token }) => {
+const Offers = ({ search, isToggled, token, priceMax, priceMin }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
@@ -14,7 +14,7 @@ const Offers = ({ search, isToggled, token }) => {
         const response = await axios.get(
           `https://vinted-test-api.herokuapp.com/offers/?title=${search}&sort=${
             isToggled === false ? "price-asc" : "price-desc"
-          }`
+          }&priceMax=${priceMax}&priceMin=${priceMin}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -23,7 +23,7 @@ const Offers = ({ search, isToggled, token }) => {
       }
     };
     fetchData();
-  }, [search, isToggled]);
+  }, [search, isToggled, priceMax, priceMin]);
 
   return isLoading ? (
     <span>Loading...</span>

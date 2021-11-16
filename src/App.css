@@ -48,12 +48,17 @@
 }
 
 .header input {
-  width: 695px;
+  width: 555px;
   height: 30px;
   border-radius: 5px;
   border: none;
   background-color: #f5f6f7;
-  margin-left: 70px;
+  margin-left: 80px;
+}
+
+.header input::placeholder {
+  border: none;
+  color: #9fa0a1;
 }
 
 #icon {
@@ -81,18 +86,51 @@
 }
 
 .header button:last-child {
-  margin-right: 40px;
+  margin-right: 30px;
   color: white;
   background-color: #2db0ba;
-  width: 173px;
+  width: 140px;
 }
 
 /* TOOGLE SWITCH */
 
+.container-switch {
+  display: flex;
+  align-items: center;
+  margin-left: 90px;
+  margin-top: 15px;
+}
+.container-switch p {
+  font-size: 13px;
+  margin-right: 5px;
+  margin-left: 5px;
+  color: #2db0ba;
+  padding: 3px 3px 3px;
+  border: 1px solid #2db0ba;
+  border-radius: 8px;
+}
+.container-switch input {
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 3px;
+}
+
+.switch-filters-asc-desc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.switch-filters-asc-desc p {
+  margin-left: 20px;
+}
+
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 70px;
+  width: 50px;
   height: 25px;
 }
 .toggle-switch input[type="checkbox"] {

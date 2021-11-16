@@ -19,6 +19,8 @@ function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [search, setSearch] = useState("");
   const [isToggled, setIsToggled] = useState(false);
+  const [priceMax, setPriceMax] = useState(0);
+  const [priceMin, setPriceMin] = useState(0);
 
   const setUser = (token) => {
     if (token) {
@@ -38,6 +40,10 @@ function App() {
         setSearch={setSearch}
         isToggled={isToggled}
         setIsToggled={setIsToggled}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
       />
       <Routes>
         <Route path="/" element={<Home token={token} />} />
@@ -45,9 +51,15 @@ function App() {
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route
-          path="/offers/:title/:sort"
+          path="/offers/:title/:priceMin/:priceMax/:sort"
           element={
-            <Offers search={search} isToggled={isToggled} token={token} />
+            <Offers
+              search={search}
+              isToggled={isToggled}
+              priceMax={priceMax}
+              priceMin={priceMin}
+              token={token}
+            />
           }
         />
         <Route path="/publish" element={<Publish token={token} />} />
