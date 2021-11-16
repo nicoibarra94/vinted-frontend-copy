@@ -1,3 +1,4 @@
+import Success from "../images/success.jpeg";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -94,7 +95,7 @@ const CheckoutForm = ({ id }) => {
           </form>
         </div>
       ) : (
-        <span> Paiment effectúe!</span>
+        <img src={Success} alt="" />
       )}
     </div>
   );
