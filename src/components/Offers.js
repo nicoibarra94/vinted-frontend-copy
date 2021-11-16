@@ -16,14 +16,14 @@ const Offers = ({ search, isToggled }) => {
           }`
         );
         setData(response.data);
-        console.log(data);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-  }, [search, data, isToggled]);
+  }, [search, isToggled]);
 
   return isLoading ? (
     <span>Loading...</span>

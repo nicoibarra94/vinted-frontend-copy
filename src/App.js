@@ -17,7 +17,7 @@ library.add(faSearch);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [isToggled, setIsToggled] = useState(false);
 
   const setUser = (token) => {

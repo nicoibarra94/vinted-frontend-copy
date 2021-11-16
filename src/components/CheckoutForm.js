@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const CheckoutForm = ({ id }) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,8 +52,19 @@ const CheckoutForm = ({ id }) => {
 
   return (
     <div>
-      {!completed ? (
+      {!completed && data ? (
         <form onSubmit={handleSubmit}>
+          <div>
+            <p>Resume de la commande</p>
+            <p>Commande</p>
+            <span>{data.product_price}</span>
+            <p>Frais protection acheteurs</p>
+            <span>0.40</span>
+            <p>Frais de port</p>
+            <span>0.80</span>
+            <p>Total</p>
+            <span>{data.product_price + 1.2}</span>
+          </div>
           <CardElement />
           <button type="submit">Valider paiment</button>
         </form>
